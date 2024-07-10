@@ -77,6 +77,7 @@ export default function SliderContainer() {
         autoplay={{ delay: 2500, disableOnInteraction: true }}
         modules={[Autoplay, Pagination]}
         className="mySwiper"
+        
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
