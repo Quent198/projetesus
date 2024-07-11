@@ -59,7 +59,7 @@ function HostingPage() {
               <div className="flex items-center space-x-4">
                 <label htmlFor="dates" className="sr-only">Dates:</label>
                 <input
-                  type="text"
+                  type="date"
                   id="dates"
                   name="dates"
                   placeholder="Sélectionner les dates"
