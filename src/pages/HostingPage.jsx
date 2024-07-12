@@ -112,9 +112,9 @@ function HostingPage() {
                     className="appearance-none bg-white border border-gray-300 text-gray-600 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   >
                     <option value="">Tous les prix</option>
-                    <option value={150}>Jusqu'à $150</option>
-                    <option value={250}>Jusqu'à $250</option>
-                    <option value={500}>Jusqu'à $500</option>
+                    <option value={150}>Jusqu'à 150€</option>
+                    <option value={250}>Jusqu'à 250€</option>
+                    <option value={500}>Jusqu'à 500€</option>
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-600">
                     <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
