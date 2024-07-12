@@ -10,6 +10,8 @@ import Register from "./components/auth/Register";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import HostingPage from "./pages/HostingPage";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
       {
         path:"/hostingpage",
         element:<HostingPage/>
+      },
+      {
+        path:"/forgotpassword",
+        element:<ForgotPassword/>
+      },
+      {
+        path:"/resetpassword",
+        element:<ResetPassword/>
       }
     ],
   },

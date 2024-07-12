@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
+import Footer from "../Footer"
 
 export default function Login() {
   return (
@@ -67,10 +68,13 @@ export default function Login() {
           </p>
 
           <p className="text-sm hover:cursor-pointer hover:text-secondary">
-            Mot de passe oublié
+            <Link to="/forgotpassword">
+             Mot de passe oublié
+            </Link>
           </p>
         </form>
       </div>
+      <Footer/>
     </div>
   );
 }
