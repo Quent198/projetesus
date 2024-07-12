@@ -54,7 +54,7 @@ export default function SliderContainer() {
         </h1>
         <h2 className="max-w-[750px] my-10 pointer-events-none">
           Préparez-vous à{" "}
-          <span className="text-secondary font-bold">explorer le monde</span>{" "}
+          <span className="text-secondary font-bold">explorer la France</span>{" "}
           avec notre sélection exclusive des meilleurs endroits à visiter.
         </h2>
         <button
