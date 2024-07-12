@@ -133,7 +133,7 @@ function HostingPage() {
                     <div className="p-4">
                       <h3 className="text-lg font-semibold mb-2">{accommodation.name}</h3>
                       <p className="text-gray-600">{accommodation.type}</p>
-                      <p className="text-gray-800 font-bold mt-2">{`$${accommodation.price}/nuit`}</p>
+                      <p className="text-gray-800 font-bold mt-2">{`${accommodation.price}€/nuit`}</p>
                     </div>
                   </div>
                 ))}
