@@ -39,10 +39,10 @@ export default function Header() {
             
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
-            Actualités
+          <Link to="/newspage">Actualité</Link>
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
-            Avis
+          <Link to="/reviewpage">Avis</Link>
           </li>
           <li>
             <Link

@@ -2,20 +2,22 @@ import React from 'react';
 import PlaceCard from "../components/PlaceCard"
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import image1 from "../assets/Slider/slider1.jpg"
+import image2 from "../assets/Slider/slider2.jpg"
 
-const PlacesPage = () => {
+function PlacesPage() {
   const places = [
     {
-      image: 'path/to/image1.jpg',
+      image: image1,
       title: 'Lieu 1',
       description: 'Description du lieu 1...',
     },
     {
-      image: 'path/to/image2.jpg',
+      image: image2,
       title: 'Lieu 2',
       description: 'Description du lieu 2...',
     },
-    // Ajoutez d'autres lieux ici
+    
   ];
 
   return (

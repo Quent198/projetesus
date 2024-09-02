@@ -13,6 +13,8 @@ import HostingPage from "./pages/HostingPage";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
 import PlacesPage from "./pages/PlacesPage";
+import NewsPage from "./pages/NewsPage";
+import ReviewsPage from "./pages/ReviewPage";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +65,16 @@ export const router = createBrowserRouter([
       {
         path:"/placespage",
         element:<PlacesPage/>
+      },
+      {
+        path:"newspage",
+        element:<NewsPage/>
+      },
+      {
+        path:"reviewpage",
+        element:<ReviewsPage/>
       }
+      
     ],
   },
 ]);
