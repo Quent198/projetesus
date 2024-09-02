@@ -32,7 +32,7 @@ export default function Header() {
             <Link to="/">Accueil</Link>
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
-            Lieux
+            <Link to="/placespage">Lieux</Link>
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
             <Link to="/hostingpage">Hébergement</Link>

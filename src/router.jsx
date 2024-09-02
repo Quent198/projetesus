@@ -12,6 +12,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import HostingPage from "./pages/HostingPage";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
+import PlacesPage from "./pages/PlacesPage";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path:"/resetpassword",
         element:<ResetPassword/>
+      },
+      {
+        path:"/placespage",
+        element:<PlacesPage/>
       }
     ],
   },
