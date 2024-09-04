@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { forgotPassword } from '../../../api/user'; // Fonction API pour le mot de passe oublié
+import { forgotPassword } from '../../api/user'; // Fonction API pour le mot de passe oublié
 import Header from "../../components/Header";
 import Footer from "../Footer";
 

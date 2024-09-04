@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     tokenEmail: { type: String, required: false },
     tokenPassword: { type: String, required: false },
     rgpd: { type: Boolean, default: true },
-    newsletter: { type: Boolean, required: true },
+    newsletter: { type: Boolean, required: false },
     isBanned: { type: Boolean, required: false },
     privacy: { type: String, default: "semiPublic" },
     restrictedDirectMessages: { type: Boolean, default: false },

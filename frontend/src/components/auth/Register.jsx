@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { signup } from '../../../api/user'; // Import de la fonction API pour l'inscription
+import { signup } from '../../api/user'; // Import de la fonction API pour l'inscription
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -112,7 +112,8 @@ export default function Register() {
       if (response.message === "ACCOUNT_CREATED") {
         alert("Compte créé avec succès !");
       } else {
-        alert("Erreur lors de la création du compte.");
+        alert("Erreur lors de la création du compte.",response.message);
+
       }
 
     } catch (error) {

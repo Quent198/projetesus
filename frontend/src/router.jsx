@@ -15,6 +15,7 @@ import ResetPassword from "./components/auth/ResetPassword";
 import PlacesPage from "./pages/PlacesPage";
 import NewsPage from "./pages/NewsPage";
 import ReviewsPage from "./pages/ReviewPage";
+import VerifyMail from "./pages/VerifyMail";
 
 export const router = createBrowserRouter([
   {
@@ -67,12 +68,16 @@ export const router = createBrowserRouter([
         element:<PlacesPage/>
       },
       {
-        path:"newspage",
+        path:"/newspage",
         element:<NewsPage/>
       },
       {
-        path:"reviewpage",
+        path:"/reviewpage",
         element:<ReviewsPage/>
+      },
+      {
+        path:"/verifymail/:token",
+        element:<VerifyMail/>
       }
       
     ],

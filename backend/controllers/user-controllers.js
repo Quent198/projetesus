@@ -1,7 +1,11 @@
 const User = require("../models/user.schema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { sendConfirmationEmail } = require("../email/email");
+const {
+  sendConfirmationEmail,
+  sendValidationAccount,
+  sendInvalideToken,
+} = require("../email/email");
 
 const createTokenEmail = (email) => {
   return jwt.sign({ email }, process.env.SECRET, { expiresIn: "24h" });
@@ -20,8 +24,9 @@ const createTokenLogin = (_id, res) => {
 
 // Inscription
 const signupUser = async (req, res) => {
-  const { username, email, password, newsletter } = req.body;
-  if (!username || !email || !password || !newsletter) {
+  const { username, email, password } = req.body;
+  if (!username || !email || !password ) {
+    console.log(zadezdz)
     return res.status(400).json({ error: "ACCOUNT_CREATION_ERROR" });
   }
   try {
@@ -32,12 +37,14 @@ const signupUser = async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
+    const token = createTokenEmail(email);
     const newUser = new User({
       profile: { username },
-      account: { email, password: hashPassword, newsletter },
+      account: { tokenEmail:token ,email, password: hashPassword },
     });
 
     await newUser.save();
+    await sendConfirmationEmail(email, token);
     return res.status(200).json({ message: "ACCOUNT_CREATED" });
   } catch (error) {
     console.error(error);
@@ -63,7 +70,7 @@ const signinUser = async (req, res) => {
       return res.status(400).json({ error: "INVALID_CREDENTIALS" });
     }
 
-    if (user.tokenEmail) {
+    if (user.account.tokenEmail) {
       return res.status(400).json({ error: "ACCOUNT_NOT_VALIDED" });
     }
 
@@ -78,8 +85,38 @@ const signinUser = async (req, res) => {
     console.error(error);
     return res.status(400).json({ error: "ACCOUNT_LOGIN_ERROR" });
   }
+  
 };
-
+const verifyMail = async (req, res) => {
+    const token = req.params.token;
+    const isTokenNull = await User.findOne({ "account.tokenEmail": token });
+    console.log(isTokenNull);
+    
+    const decoded = jwt.verify(token, process.env.SECRET, {
+      ignoreExpiration: true,
+    });
+    console.log(decoded);
+    try {
+      if (!isTokenNull) {
+        res.status(400).json({ message: "Token déjà validé.", status: 400 });
+        return;
+      }
+      if (decoded.exp * 1000 > new Date().getTime()) {
+        //Token encore valide
+        await User.findOneAndUpdate({ "account.email": decoded.email }, { "account.tokenEmail": null });
+        await sendValidationAccount(decoded.email);
+        res.json({ message: "Inscription confirmée avec succès", status: 200 });
+      } else {
+        await User.findOneAndDelete({ "account.email": decoded.email });
+        await sendInvalideToken(decoded.email);
+        res
+          .status(400)
+          .json({ message: "Token non valide ou expiré", status: 400 });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 // Mot de passe oublié
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
@@ -121,4 +158,4 @@ const resetPassword = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, signinUser, forgotPassword, resetPassword };
+module.exports = { signupUser, signinUser, forgotPassword, resetPassword, verifyMail };

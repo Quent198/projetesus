@@ -7,6 +7,7 @@ const {
   signinUser,
   forgotPassword,
   resetPassword,
+  verifyMail,
 } = require("../controllers/user-controllers");
 
 // Route pour l'inscription
@@ -25,6 +26,8 @@ router.post("/forgotPassword", forgotPassword);
 
 // Route pour réinitialiser le mot de passe
 router.post("/resetPassword", resetPassword);
+
+router.get("/verifymail/:token", verifyMail);
 
 module.exports = router;
 

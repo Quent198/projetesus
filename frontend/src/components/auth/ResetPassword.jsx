@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { resetPassword } from '../../../api/user'; // Fonction API pour réinitialiser le mot de passe
+import { resetPassword } from '../../api/user'; // Fonction API pour réinitialiser le mot de passe
 import Header from "../../components/Header";
 import Footer from "../Footer";
 
