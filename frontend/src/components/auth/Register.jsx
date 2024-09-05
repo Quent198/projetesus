@@ -1,17 +1,13 @@
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import * as formik from 'formik';
-import * as yup from 'yup';
-import { useEffect, useState } from 'react';
-import { initializeApp } from "firebase/app";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importer useNavigate
 import { signup } from '../../api/user'; // Import de la fonction API pour l'inscription
 import Header from '../Header';
 import Footer from '../Footer';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { initializeApp } from "firebase/app";
+import { Button, Col, Form, InputGroup, Row, Container } from 'react-bootstrap';
 
 // Configuration Firebase
 const firebaseConfig = {
@@ -29,18 +25,17 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
 export default function Register() {
-  const { Formik } = formik;
   const [img, setImage] = useState("");
   const [imageUrl, setImageUrl] = useState(""); // Stocker l'URL de l'image Firebase
+  const navigate = useNavigate(); // Utiliser useNavigate pour la redirection
 
-  // Fonction pour uploader le fichier sur Firebase dès qu'une image est sélectionnée
   useEffect(() => {
     if (img) {
       uploadFile(img);
     }
   }, [img]);
 
-  // Schéma de validation des données du formulaire
+  // Schéma de validation avec Yup
   const schema = yup.object().shape({
     firstName: yup.string().required("Prénom requis"),
     lastName: yup.string().required("Nom requis"),
@@ -54,11 +49,12 @@ export default function Register() {
     terms: yup.bool().required().oneOf([true], 'Vous devez accepter les termes et conditions'),
   });
 
+  // Fonction pour uploader le fichier sur Firebase dès qu'une image est sélectionnée
   const uploadFile = (file) => {
     const fileName = new Date().getTime() + "_" + file.name;
     const storageRef = ref(storage, "images/" + fileName); // Référence dans Firebase Storage
     const uploadTask = uploadBytesResumable(storageRef, file);
-  
+
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -67,37 +63,22 @@ export default function Register() {
       },
       (error) => {
         // Gestion des erreurs d'upload
-        switch (error.code) {
-          case 'storage/unauthorized':
-            console.error("Utilisateur non autorisé à uploader des fichiers.");
-            break;
-          case 'storage/canceled':
-            console.error("L'upload a été annulé.");
-            break;
-          case 'storage/unknown':
-            console.error("Erreur inconnue:", error.message);
-            break;
-          default:
-            console.error("Erreur lors de l'upload:", error);
-        }
+        console.error("Erreur lors de l'upload :", error);
       },
       () => {
         // Upload réussi
         getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
           setImageUrl(downloadUrl); // Stocker l'URL de l'image
-          console.log("Image téléchargée avec succès ! URL:", downloadUrl);
         });
       }
     );
   };
-  
 
-  // Fonction qui est déclenchée lors de la soumission du formulaire
+  // Fonction déclenchée lors de la soumission du formulaire
   const handleSubmit = async (values) => {
     const { firstName, lastName, username, city, state, email, password } = values;
 
     try {
-      // Envoi des données au backend après upload de l'image
       const response = await signup({
         firstName,
         lastName,
@@ -111,9 +92,9 @@ export default function Register() {
 
       if (response.message === "ACCOUNT_CREATED") {
         alert("Compte créé avec succès !");
+        navigate('/login'); // Redirige vers la page login après succès
       } else {
-        alert("Erreur lors de la création du compte.",response.message);
-
+        alert("Erreur lors de la création du compte :", response.message);
       }
 
     } catch (error) {
@@ -323,4 +304,5 @@ export default function Register() {
     </div>
   );
 }
+
 
