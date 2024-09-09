@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "66deb521e75135fa363cede3",
+    "account": {
+      "email": "quentingraj@gmail.com",
+      "password": "$2b$10$U8shR7kYSraf02ZcvthWZeJlQvzrsj4qWuSg7YnmESE86N3Po/.SS",
+      "tokenEmail": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InF1ZW50aW5ncmFqQGdtYWlsLmNvbSIsImlhdCI6MTcyNTg3MTM5MywiZXhwIjoxNzI1OTU3NzkzfQ.5rDHYU6esqYQjK4HD14o7ZFXun-OerMkS6_mzLvq3mU",
+      "loginLocationSecurity": true,
+      "rgpd": true,
+      "privacy": "semiPublic",
+      "restrictedDirectMessages": false,
+      "notifications": [],
+      "logs": []
+    },
+    "preferences": {
+      "notifications": {
+        "onNewFollow": true,
+        "onNewMessage": true,
+        "onCommentReply": true,
+        "onCommentLike": true
+      },
+      "language": "FR"
+    },
+    "profile": {
+      "username": "quentin198",
+      "avatar": "https://wallpapers-clan.com/wp-content/uploads/2022/07/anime-default-pfp-2.jpg",
+      "banner": null,
+      "bio": null,
+      "socialNetworks": {
+        "twitter": null,
+        "discord": null,
+        "youtube": null,
+        "spotify": null
+      },
+      "profileColor": "white",
+      "location": null
+    },
+    "lists": {
+      "animes": [],
+      "mangas": []
+    },
+    "animes": [],
+    "mangas": [],
+    "__v": 0
+  }
+]

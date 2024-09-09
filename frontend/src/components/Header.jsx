@@ -86,20 +86,31 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
-                  <FontAwesomeIcon icon={faLocationDot} className="m-0" />
-                  <a className="m-0 p-0">Lieux</a>
+                  <Link to="/placespage">
+                    <FontAwesomeIcon icon={faLocationDot} className="m-0" />
+                    <a className="m-0 p-0">Lieux</a>
+                  </Link>
+                  
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
-                  <FontAwesomeIcon icon={faBed} className="m-0" />
-                  <a className="m-0 p-0">Hébergement</a>
+                  <Link to="/hostingpage">
+                    <FontAwesomeIcon icon={faBed} className="m-0" />
+                    <a className="m-0 p-0">Hébergement</a>
+                  </Link>
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
-                  <FontAwesomeIcon icon={faNewspaper} className="m-0" />
-                  <a className="m-0 p-0">Actualités</a>
+                  <Link to="/newspage"> 
+                      <FontAwesomeIcon icon={faNewspaper} className="m-0" />
+                      <a className="m-0 p-0">Actualités</a>
+                  </Link>
+                  
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
-                  <FontAwesomeIcon icon={faStar} className="m-0" />
-                  <a className="m-0 p-0">Avis</a>
+                  <Link to="/reviewpage">
+                     <FontAwesomeIcon icon={faStar} className="m-0" />
+                     <a className="m-0 p-0">Avis</a>
+                  </Link>
+                  
                 </li>
               </ul>
             </div>
