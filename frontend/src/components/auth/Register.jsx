@@ -22,7 +22,7 @@ const firebaseConfig = {
 
 // Initialisation Firebase
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+export const storage = getStorage(app);
 
 export default function Register() {
   const [img, setImage] = useState("");

@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { signin } from '../../api/user'; // Fonction API pour la connexion
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../Footer";
+import { UserContext } from '../../context/UserContext';
 
 export default function Login() {
+ const {setConnectedUser} = useContext(UserContext)
+ const navigate = useNavigate()
   const [formData, setFormData] = useState({
     emailUsername: '',
     password: ''
@@ -22,7 +25,8 @@ export default function Login() {
       if (response.message === 'LOGIN_SUCCESS') {
         alert("Connexion réussie !");
         // Enregistrement du token ou redirection si nécessaire
-        // window.localStorage.setItem('token', response.tokenLogin);
+        setConnectedUser(response.user)
+        navigate("/")
       } else {
         alert(response.error); // Gère les erreurs de connexion
       }

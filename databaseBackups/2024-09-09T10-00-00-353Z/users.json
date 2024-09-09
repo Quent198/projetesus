@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "66deba68e75135fa363cee05",
+    "account": {
+      "email": "quentingraj@gmail.com",
+      "password": "$2b$10$AwktTeToPR1piLqboUGiCOt5qKlVx4Xe5HTgJctgzXmhDd3S2IDVm",
+      "tokenEmail": null,
+      "loginLocationSecurity": true,
+      "rgpd": true,
+      "privacy": "semiPublic",
+      "restrictedDirectMessages": false,
+      "notifications": [],
+      "logs": []
+    },
+    "preferences": {
+      "notifications": {
+        "onNewFollow": true,
+        "onNewMessage": true,
+        "onCommentReply": true,
+        "onCommentLike": true
+      },
+      "language": "FR"
+    },
+    "profile": {
+      "username": "quentin",
+      "avatar": "https://wallpapers-clan.com/wp-content/uploads/2022/07/anime-default-pfp-2.jpg",
+      "banner": null,
+      "bio": null,
+      "socialNetworks": {
+        "twitter": null,
+        "discord": null,
+        "youtube": null,
+        "spotify": null
+      },
+      "profileColor": "white",
+      "location": null
+    },
+    "lists": {
+      "animes": [],
+      "mangas": []
+    },
+    "animes": [],
+    "mangas": [],
+    "__v": 0
+  }
+]

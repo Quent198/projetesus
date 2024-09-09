@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
         element:<ForgotPassword/>
       },
       {
-        path:"/resetpassword",
+        path:"/resetpassword/:token",
         element:<ResetPassword/>
       },
       {

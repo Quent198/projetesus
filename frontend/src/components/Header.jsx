@@ -14,8 +14,13 @@ import {
 import Logo from "../assets/Logo.png";
 
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 export default function Header() {
+
+  const {user, logoutConnectedUser} = useContext(UserContext)
+  console.log(user)
   return (
     <header className="relative bg-white w-screen h-[10svh] flex justify-between items-center p-3 z-[999]">
       <Link to="/" className="text-primary font-bold hover:text-secondary">
@@ -27,7 +32,6 @@ export default function Header() {
       </Link>
       <nav>
         <ul className="flex flex-row items-center justify-between">
-          
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
             <Link to="/">Accueil</Link>
           </li>
@@ -36,30 +40,52 @@ export default function Header() {
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
             <Link to="/hostingpage">Hébergement</Link>
-            
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
-          <Link to="/newspage">Actualité</Link>
+            <Link to="/newspage">Actualité</Link>
           </li>
           <li className="mx-5 hover:text-primary hover:cursor-pointer hidden laptop:flex">
-          <Link to="/reviewpage">Avis</Link>
+            <Link to="/reviewpage">Avis</Link>
           </li>
-          <li>
-            <Link
-              to="/login"
-              className="text-primary font-bold hover:text-secondary"
-            >
-              <button
-                className="
+          {user ? (
+            <li>
+              <Link
+                to="/"
+                className="text-primary font-bold hover:text-secondary"
+              >
+                <button
+                onClick={()=> 
+                    logoutConnectedUser()
+                }
+                  className="
             mx-5 btn bg-primary text-white border-none rounded-[100px] flex-row justify-evenly items-center text-xl hover:bg-secondary
             hidden phone:flex
             "
+                >
+                  <FontAwesomeIcon icon={faUser} />
+                  <p className="mx-1">Déconnexion</p>
+                </button>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link
+                to="/login"
+                className="text-primary font-bold hover:text-secondary"
               >
-                <FontAwesomeIcon icon={faUser} />
-                <p className="mx-1">Connexion</p>
-              </button>
-            </Link>
-          </li>
+                <button
+                  className="
+            mx-5 btn bg-primary text-white border-none rounded-[100px] flex-row justify-evenly items-center text-xl hover:bg-secondary
+            hidden phone:flex
+            "
+                >
+                  <FontAwesomeIcon icon={faUser} />
+                  <p className="mx-1">Connexion</p>
+                </button>
+              </Link>
+            </li>
+          )}
+
           <li className="laptop:hidden flex">
             <div className="dropdown dropdown-end">
               <div
@@ -90,7 +116,6 @@ export default function Header() {
                     <FontAwesomeIcon icon={faLocationDot} className="m-0" />
                     <a className="m-0 p-0">Lieux</a>
                   </Link>
-                  
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
                   <Link to="/hostingpage">
@@ -99,18 +124,16 @@ export default function Header() {
                   </Link>
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
-                  <Link to="/newspage"> 
-                      <FontAwesomeIcon icon={faNewspaper} className="m-0" />
-                      <a className="m-0 p-0">Actualités</a>
+                  <Link to="/newspage">
+                    <FontAwesomeIcon icon={faNewspaper} className="m-0" />
+                    <a className="m-0 p-0">Actualités</a>
                   </Link>
-                  
                 </li>
                 <li className="flex flex-row items-center justify-center hover:text-gray-200">
                   <Link to="/reviewpage">
-                     <FontAwesomeIcon icon={faStar} className="m-0" />
-                     <a className="m-0 p-0">Avis</a>
+                    <FontAwesomeIcon icon={faStar} className="m-0" />
+                    <a className="m-0 p-0">Avis</a>
                   </Link>
-                  
                 </li>
               </ul>
             </div>

@@ -5,6 +5,7 @@ const {
   sendConfirmationEmail,
   sendValidationAccount,
   sendInvalideToken,
+  sendResetPasswordEmail,
 } = require("../email/email");
 
 const createTokenEmail = (email) => {
@@ -44,7 +45,7 @@ const signupUser = async (req, res) => {
     });
 
     await newUser.save();
-    await sendConfirmationEmail(email, token);
+    await sendConfirmationEmail(email, token.replace(/./g, ","));
     return res.status(200).json({ message: "ACCOUNT_CREATED" });
   } catch (error) {
     console.error(error);
@@ -123,13 +124,13 @@ const forgotPassword = async (req, res) => {
   try {
     const user = await User.findOne({ "account.email": email });
     if (!user) {
-      return res.status(400).json({ error: "INVALID_EMAIL" });
+      return res.status(200).json({ error: "Nous avons envoyé un email pour réinitialiser le mot de passe" });
     }
     const token = createTokenEmail(user.account.email);
     user.account.tokenPassword = token;
     await user.save();
-    await sendConfirmationEmail(email, token);
-    return res.status(200).json({ message: "EMAIL_SENT" });
+    await sendResetPasswordEmail(email, token.replace(/./g, ","));
+    return res.status(200).json({ message: "Nous avons envoyé un email pour réinitialiser le mot de passe" });
   } catch (error) {
     console.error(error);
     return res.status(400).json({ error: "PASSWORD_RESET_ERROR" });

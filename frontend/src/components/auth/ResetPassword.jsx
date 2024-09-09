@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { resetPassword } from '../../api/user'; // Fonction API pour réinitialiser le mot de passe
 import Header from "../../components/Header";
 import Footer from "../Footer";
+import { useParams } from 'react-router-dom';
 
 export default function ResetPassword() {
+  const {token} = useParams()
   const [formData, setFormData] = useState({
-    token: '', // Le token doit être extrait depuis l'URL dans une vraie app
     password: '',
     confirmPassword: ''
   });
@@ -23,6 +24,7 @@ export default function ResetPassword() {
     }
 
     try {
+      formData.token = token
       const response = await resetPassword(formData);
       if (response.message === "PASSWORD_RESET_SUCCESS") {
         alert("Mot de passe réinitialisé avec succès !");

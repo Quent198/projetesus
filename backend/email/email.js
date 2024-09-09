@@ -43,8 +43,21 @@ const sendInvalideToken = async (email) => {
   await transporter.sendMail(mailOptions);
 };
 
+const sendResetPasswordEmail = async (email, token) => {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: email,
+    subject: "Esus - Réinitilisation de votre de passe",
+    html: `<p>Cliquez sur ce lien afin de réinitialiser votre mot de passe, si vous n'êtes pas à l'origine de cette demande, veuillez nous contacter le plus rapidement possible : <a href="http://localhost:5173/resetPassword/${token}">Réinitialiser votre mot de passe</a>.</p>`,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
+
+
 module.exports = {
   sendConfirmationEmail,
   sendValidationAccount,
   sendInvalideToken,
+  sendResetPasswordEmail,
 };
