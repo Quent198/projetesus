@@ -25,6 +25,8 @@ export default function Contact() {
             <option>Souscription</option>
             <option>Connexion/Inscription</option>
             <option>Autres</option>
+            <option>Télécharger mes données</option>
+            <option>Supprimer mes données</option>
             {/* ajouter un input si l'utilisateur choisit "autres" */}
           </select>
         </label>

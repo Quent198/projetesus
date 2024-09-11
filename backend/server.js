@@ -13,7 +13,7 @@ const {
 } = require("./controllers/database-controllers");
 
 const usersRoutes = require("./routes/users");
-const adminRoutes = require("./routes/admin");
+
 
 const app = express();
 app.use(express.json());
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/users", usersRoutes);
-app.use("/api/admin", adminRoutes);
+
 
 mongoose
   .connect(process.env.MONGO_URI)

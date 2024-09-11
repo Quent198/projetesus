@@ -20,7 +20,7 @@ import { UserContext } from "../context/UserContext";
 export default function Header() {
 
   const {user, logoutConnectedUser} = useContext(UserContext)
-  console.log(user)
+  
   return (
     <header className="relative bg-white w-screen h-[10svh] flex justify-between items-center p-3 z-[999]">
       <Link to="/" className="text-primary font-bold hover:text-secondary">

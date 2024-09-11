@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-console.log(process.env.EMAIL_USER, process.env.EMAIL_PASS)
+
 
 const sendConfirmationEmail = async (email, token) => {
   const mailOptions = {

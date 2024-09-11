@@ -51,6 +51,7 @@ export default function Login() {
               onChange={handleInputChange}
               required
             />
+            {formData.emailUsername ==="" && (<p>champs requis</p>)}
           </label>
           <label className="input input-bordered flex items-center gap-2 bg-primary text-white">
             <input
@@ -62,6 +63,7 @@ export default function Login() {
               onChange={handleInputChange}
               required
             />
+            {formData.password==="" && (<p>champs requis</p>)}
           </label>
 
           <button

@@ -24,6 +24,7 @@ export async function signin(values) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
+      credentials: "include",
     });
     const newUser = await response.json();
     return newUser;
